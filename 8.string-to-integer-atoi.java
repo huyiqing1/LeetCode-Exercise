@@ -24,10 +24,8 @@ class Solution {
         }
         if (negative)
             res *= -1;
-        if (res >= Integer.MAX_VALUE)
-            return Integer.MAX_VALUE;
-        if (res <= Integer.MIN_VALUE)
-            return Integer.MIN_VALUE;
+        res = res >= Integer.MAX_VALUE ? Integer.MAX_VALUE : res;
+        res = res <= Integer.MIN_VALUE ? Integer.MIN_VALUE : res;
         return (int) res;
     }
 
