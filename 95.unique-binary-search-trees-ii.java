@@ -1,4 +1,5 @@
 import java.util.*;
+
 /*
  * @lc app=leetcode id=95 lang=java
  *
@@ -27,16 +28,29 @@ class Solution {
 
     private List<TreeNode> helper(int start, int end) {
         List<TreeNode> res = new ArrayList<>();
-        if (start >= end) {
-            TreeNode root = new TreeNode(start);
-            if (start == end)
-                res.add(root);
-            else
-                res.add(null);
+        if (start > end) {
+            res.add(null);
+            return res;
+        }
+        if (start == end) {
+            res.add(new TreeNode(start));
+            return res;
+        }
+
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> left = helper(start, i - 1);
+            List<TreeNode> right = helper(i + 1, end);
+            for (TreeNode j : left) {
+                for (TreeNode k : right) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = j;
+                    root.right = k;
+                    res.add(root);
+                }
+            }
         }
         return res;
     }
-
 }
 
 // @lc code=end
