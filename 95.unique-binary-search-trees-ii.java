@@ -4,9 +4,6 @@ import java.util.*;
  *
  * [95] Unique Binary Search Trees II
  */
-
-import javax.swing.tree.TreeNode;
-
 // @lc code=start
 /**
  * Definition for a binary tree node.
