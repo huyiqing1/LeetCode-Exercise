@@ -40,11 +40,11 @@ class Solution {
         for (int i = start; i <= end; i++) {
             List<TreeNode> left = helper(start, i - 1);
             List<TreeNode> right = helper(i + 1, end);
-            for (TreeNode j : left) {
-                for (TreeNode k : right) {
+            for (TreeNode l : left) {
+                for (TreeNode r : right) {
                     TreeNode root = new TreeNode(i);
-                    root.left = j;
-                    root.right = k;
+                    root.left = l;
+                    root.right = r;
                     res.add(root);
                 }
             }
