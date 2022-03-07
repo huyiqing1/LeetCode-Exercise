@@ -1,9 +1,9 @@
 import java.util.*;
 
 /*
- * @lc app=leetcode id=102 lang=java
+ * @lc app=leetcode id=103 lang=java
  *
- * [102] Binary Tree Level Order Traversal
+ * [103] Binary Tree Zigzag Level Order Traversal
  */
 // @lc code=start
 /**
@@ -22,15 +22,16 @@ import java.util.*;
  * }
  */
 class Solution {
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
         if (root == null)
             return res;
         Queue<TreeNode> q = new LinkedList<>();
+        boolean reverse = false;
         q.offer(root);
         while (!q.isEmpty()) {
-            int size = q.size();
             List<Integer> list = new ArrayList<>();
+            int size = q.size();
             for (int i = 0; i < size; i++) {
                 TreeNode t = q.poll();
                 list.add(t.val);
@@ -39,7 +40,10 @@ class Solution {
                 if (t.right != null)
                     q.offer(t.right);
             }
+            if (reverse)
+                Collections.reverse(list);
             res.add(new ArrayList<>(list));
+            reverse = !reverse;
         }
         return res;
     }
